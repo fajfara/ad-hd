@@ -198,9 +198,14 @@
 
         &__next-button {
             position: absolute;
-            right: 0;
+            right: 2rem;
             top: 50%;
             transform: translateY(-50%);
+            width: 4rem;
+
+            &__icon {
+              width: 100%;
+            }
         }
     }
 }

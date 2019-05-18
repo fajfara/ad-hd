@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
+
+import nextButton from '../img/right-arrow.svg';
 import Ribbon from "../img/ribbon.png";
 import Monkey from "../img/monkey.png";
+
+import { Link } from 'react-router-dom';
 
 
 export default class Home extends Component {
@@ -68,7 +72,11 @@ export default class Home extends Component {
             </div>
 
             <div className="instructions__main__next-button">
-              <button>Start</button>
+              <div className="instructions__main__next-button__icon">
+                <Link to="/questions">
+                  <img src={nextButton} alt="Next button"/>
+                </Link>
+              </div>
             </div>
           </div>
         </section>

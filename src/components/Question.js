@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 // Image import
 import arrowIcon from '../img/right-arrow.svg';
@@ -7,58 +8,72 @@ export default class Question extends Component {
 
   constructor(props) {
     super(props);
-    this.contentRef = React.createRef();
+    this.contentRef = null;
   }
 
   state = {
     index: 0,
     questions: this.props.questions,
-    correctAnswer: ""
+    correctAnswer: "",
+    score: 0,
+    doLoadQuestion: false
   }
 
-  loadQuestion(index) {
-    this.contentRef.inneHTML = "";
+  loadQuestion = () => {
+
+    const index = this.state.index;
 
     this.setState({
-      correctAnswer: this.state.questions[index].correctAnswer
+      correctAnswer: this.state.questions[index].correctAnswer,
+      question: this.state.questions
     });
-    return <div className="question__content__title">
-      <h3>{this.state.questions[index].questionContent}</h3>
-      <div className="question__content__answers">
-        <form>
-          <input type="radio" name="answer" value={this.state.questions[index].answers.a} /> <p> { this.state.questions[index].answers.a } </p> <br />
-          <input type="radio" name="answer" value={this.state.questions[index].answers.b} /> <p> { this.state.questions[index].answers.b } </p> <br />
-          <input type="radio" name="answer" value={this.state.questions[index].answers.c} /> <p> { this.state.questions[index].answers.c } </p> <br />
-        </form>
-      </div>
-    </div>
+
   }
 
-  loadFact(index) {
-    return <div className="question__content__fact">
-              <p>
-                {this.state.questions[index]}
-              </p>
-          </div>
+  formatBoldText(text) {
+    const jsxTest = text.split(" ").map(word => {
+      const splittedWord = word.split("");
+      if (splittedWord[0] === "_" && splittedWord[1] === "_") {
+        splittedWord.splice(0, 1);
+        splittedWord[0] = "<span>";
+        splittedWord.splice(splittedWord.length - 1, 1);
+        splittedWord[splittedWord.length - 1] = "</span>";
+      }
+      return splittedWord.join("");
+    });
+
+    return jsxTest.join(" ");
+
+  }
+
+  callNext = () => {
+    this.setState({
+      doLoadQuestion: true
+    })
   }
 
 
   render() {
+
     return (
       <div className="question">
-        <div className="question__content" ref={this.contentRef}>
-        {
-          this.loadFact()
-        }
+        <div className="question__content" ref={div => this.contentRef = div}>
+          {
+            this.state.doLoadQuestion ?
+            <p dangerouslySetInnerHTML={{__html: this.formatBoldText(this.state.questions[this.state.index].questionContent)}}></p> :
+            <p dangerouslySetInnerHTML={{__html: this.formatBoldText(this.state.questions[this.state.index].fact)}}></p>
+          }
         </div>
 
         <div className="question__content__backBtn">
-                <img src={arrowIcon} alt="Go back" />
-              </div>
-              <div className="question__content__nextBtn">
-                <img src={arrowIcon} alt="Go forward" />
-              </div>
+          <Link to="/">
+            <img src={arrowIcon} alt="Go back" />
+          </Link>
         </div>
+        <div className="question__content__nextBtn" onClick={this.callNext} >
+          <img src={arrowIcon} alt="Go forward" />
+        </div>
+      </div>
     )
   }
 }

@@ -1,37 +1,50 @@
 .questions {
-    width: 100vw;
-    height: 100vh;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  .question {
+    width: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
 
-    .question {
-        width: 80%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-
-        &__content {
-            
-            width: 90%;
-            margin: 0 auto;
-
+    &__content {
+      p {
+        font-family: $roboto;
+        font-size: 22px;
+        line-height: 2rem;
+        span {
+          font-weight: 900;
         }
+      }
 
-        &__backBtn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            left: 0;
-        }
+      &__backBtn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%) rotate(180deg);
+        left: 2rem;
+        width: 4rem;
 
-        &__nextBtn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            right: 0;
+        img {
+          width: 100%;
         }
+      }
+
+      &__nextBtn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 2rem;
+        width: 4rem;
+
+        img {
+          width: 100%;
+        }
+      }
     }
+  }
 }
