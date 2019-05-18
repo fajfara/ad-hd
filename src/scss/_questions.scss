@@ -1,4 +1,37 @@
 .questions {
     width: 100vw;
     height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    .question {
+        width: 80%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+
+        &__content {
+            
+            width: 90%;
+            margin: 0 auto;
+
+        }
+
+        &__backBtn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 0;
+        }
+
+        &__nextBtn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 0;
+        }
+    }
 }

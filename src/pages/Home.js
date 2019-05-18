@@ -4,7 +4,13 @@ import Monkey from "../img/monkey.png";
 
 
 export default class Home extends Component {
+
   render() {
+
+    window.addEventListener("scroll", () => {
+
+    })
+
     return (
       <>
         <section className="main">

@@ -25,11 +25,11 @@ export default class Questions extends Component {
         client.getEntries()
             .then((response) => {
                 this.setState({
-                    questions: response.items.map( item => item.fields ),
+                    questions: (response.items.map( item => item.fields )).reverse(),
                     questionsLoaded: true
                 })
             })
-            .catch(console.error)
+            .catch(console.error);
     }
 
     startQuiz() {
