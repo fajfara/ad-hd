@@ -1,29 +1,69 @@
 .main-title {
     font-family: $roboto;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     position: relative;
+
+    &__top{
+        width: 100%;
+        display: flex;
+    }
+
+    &__bottom_text {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        z-index: 10;
+
+        p {
+            span {
+                color: #ea000b;
+            }
+        }
+        
+    }
+
     &__left {
         font-size: 100px;
         font-weight: 900;
+        position: relative;
+        z-index: 10;
     }
 
     &__center {
         font-size: 100px;
         color: #ea000b;
+        position: relative;
+        z-index: 10;
     }
 
     &__right {
         font-size: 100px;
         font-weight: 900;
+        position: relative;
+        z-index: 10;
     }
 
     &__ribbon {
         position: absolute;
-        top: 0;
+        top: -150%;
         left: 50%;
-        z-index: 0;
-        height: 10rem;
-        width: 5rem;
+        z-index: 5;
+        height: 408px;
+        width: 612px;
+        transform: translateX(-50%);
     }
+
+    &__monkey {
+        position: absolute;
+        top: -13rem;
+        left: 93%;
+        z-index: 0;
+        width: 20rem;
+        transform: translateX(-50%);
+    }
+
+    
 }
