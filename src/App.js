@@ -4,7 +4,7 @@ import './scss/main.scss';
 
 // Components import
 import Home from "./pages/Home";
-// import QuestionController from './components/QuestionController';
+import QuestionController from './components/Questions';
 
 function App() {
 
@@ -12,7 +12,7 @@ function App() {
     <Router>
       <div className="app">
         <Route path="/" exact component={ Home } />
-        <Route path="/question/:slug"/>
+        <Route path="/questions" exact component={ QuestionController }/>
       </div>
     </Router>
   );

@@ -28,6 +28,13 @@ export default class Home extends Component {
               </p>
             </div>
           </div>
+
+          <div className="main-scroll-down">
+              <div className="chevron"></div>
+              <div className="chevron"></div>
+              <div className="chevron"></div>
+              <span className="text">Scroll down</span>
+            </div>
         </section>
 
         
@@ -37,7 +44,6 @@ export default class Home extends Component {
               <p>
                 Greetings inatentive/hyperactive people, welcome to the AD/HD exploring 
                 website where you will not only learn about AD/HD but will have fun doing so.
-
               </p>
             </div>
             <div className="instructions__main__buffer"></div>
@@ -53,6 +59,10 @@ export default class Home extends Component {
                 </p>
               </div>
               
+            </div>
+
+            <div className="instructions__main__next-button">
+              <button>Start</button>
             </div>
           </div>
         </section>
