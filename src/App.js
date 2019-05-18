@@ -4,12 +4,15 @@ import './scss/main.scss';
 
 // Components import
 import Home from "./pages/Home";
+// import QuestionController from './components/QuestionController';
 
 function App() {
+
   return (
     <Router>
-      <div className="main">
+      <div className="app">
         <Route path="/" exact component={ Home } />
+        <Route path="/question/:slug"/>
       </div>
     </Router>
   );
