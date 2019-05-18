@@ -1,0 +1,29 @@
+.main-title {
+    font-family: $roboto;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    &__left {
+        font-size: 100px;
+        font-weight: 900;
+    }
+
+    &__center {
+        font-size: 100px;
+        color: #ea000b;
+    }
+
+    &__right {
+        font-size: 100px;
+        font-weight: 900;
+    }
+
+    &__ribbon {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        z-index: 0;
+        height: 10rem;
+        width: 5rem;
+    }
+}
