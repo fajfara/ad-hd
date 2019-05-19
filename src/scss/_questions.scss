@@ -59,6 +59,11 @@
         content: '';
       }
 
+      ul {
+        list-style-type: disc;
+        font-size: 1.6rem;
+      }
+
       &__backBtn {
         position: absolute;
         top: 50%;
