@@ -6,62 +6,80 @@ import arrowIcon from '../img/right-arrow.svg';
 
 export default class Question extends Component {
 
-  constructor(props) {
-    super(props);
-    this.contentRef = null;
-  }
-
   state = {
-    index: 0,
-    questions: this.props.questions,
-    correctAnswer: "",
-    score: 0,
-    doLoadQuestion: false
-  }
-
-  loadQuestion = () => {
-
-    const index = this.state.index;
-
-    this.setState({
-      correctAnswer: this.state.questions[index].correctAnswer,
-      question: this.state.questions
-    });
-
+    questionContent: this.props.content.questionContent,
+    correctAnswer: this.props.content.correctAnswer,
+    fact: this.props.content.fact,
+    doLoadQuestion: false,
+    answers: this.props.content.answers
   }
 
   formatBoldText(text) {
-    const jsxTest = text.split(" ").map(word => {
-      const splittedWord = word.split("");
-      if (splittedWord[0] === "_" && splittedWord[1] === "_") {
-        splittedWord.splice(0, 1);
-        splittedWord[0] = "<span>";
-        splittedWord.splice(splittedWord.length - 1, 1);
-        splittedWord[splittedWord.length - 1] = "</span>";
-      }
-      return splittedWord.join("");
-    });
-
-    return jsxTest.join(" ");
+    console.log(text);
+    text = text.replace(/(__[a-zA-Z0-9\/-_]+__)/g, "<span>$1</span>").replace(/__/g, "")
+    console.log(text);
+    return text;
 
   }
 
   callNext = () => {
     this.setState({
       doLoadQuestion: true
-    })
+    });
   }
+
+  checkAnswer = (event) => {
+    const clickedAnswer = event.target.getAttribute("data-answer");
+    if(this.state.correctAnswer === clickedAnswer) {
+      console.log("Yay you win!");
+      this.setState({
+        doLoadQuestion: false
+      })
+      this.props.updateIndex();
+    }
+  }
+
+  
 
 
   render() {
+
+    
 
     return (
       <div className="question">
         <div className="question__content" ref={div => this.contentRef = div}>
           {
             this.state.doLoadQuestion ?
-            <p dangerouslySetInnerHTML={{__html: this.formatBoldText(this.state.questions[this.state.index].questionContent)}}></p> :
-            <p dangerouslySetInnerHTML={{__html: this.formatBoldText(this.state.questions[this.state.index].fact)}}></p>
+              <p dangerouslySetInnerHTML={{ __html: this.formatBoldText(this.state.questionContent) }}></p> :
+              <p dangerouslySetInnerHTML={{ __html: this.formatBoldText(this.state.fact) }}></p>
+          }
+        </div>
+        <div className="question__answers">
+          {
+            this.state.doLoadQuestion ?
+
+              <div className="question__answers__content">
+                <label className="question__answers__content__answer" data-answer="a" onClick={e => this.checkAnswer(e)}>
+                  { this.state.answers.a }
+                  <input type="radio" name="answer" id="answerA"/>
+                </label>
+
+                <label className="question__answers__content__answer" data-answer="b" onClick={e => this.checkAnswer(e)}>
+                  { this.state.answers.b }
+                  <input type="radio" name="answer" id="answerB"/>
+                </label>
+
+                <label className="question__answers__content__answer" data-answer="c" onClick={e => this.checkAnswer(e)}>
+                  { this.state.answers.c }
+                  <input type="radio" name="answer" id="answerC"/>
+                </label>
+                
+              </div>
+
+              :
+
+              null
           }
         </div>
 

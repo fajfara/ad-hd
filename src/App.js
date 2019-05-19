@@ -4,7 +4,7 @@ import './scss/main.scss';
 
 // Components import
 import Home from "./pages/Home";
-import QuestionController from './components/Questions';
+import QuestionController from './components/QuestionsController';
 
 function App() {
 
