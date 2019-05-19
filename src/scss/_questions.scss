@@ -20,9 +20,43 @@
         font-family: $roboto;
         font-size: 2rem;
         line-height: 2rem;
-        span {
+        p {
+          margin-bottom: 0.5rem;
+        }
+        strong {
           font-weight: 900;
         }
+      }
+
+      blockquote{
+        font-size: 1rem;
+        margin:50px auto;
+        font-family:Open Sans;
+        font-style:italic;
+        color: #555555;
+        padding:1.2em 30px 1.2em 75px;
+        border-left:8px solid rgb(231, 175, 92) ;
+        line-height:1.6;
+        position: relative;
+        background:#EDEDED;
+
+        p {
+          font-size: 1.5rem;
+        }
+      }
+      
+      blockquote::before{
+        font-family:Arial;
+        content: "\201C";
+        color:rgb(231, 175, 92);
+        font-size:4em;
+        position: absolute;
+        left: 10px;
+        top:-10px;
+      }
+      
+      blockquote::after{
+        content: '';
       }
 
       &__backBtn {

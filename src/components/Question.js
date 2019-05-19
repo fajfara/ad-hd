@@ -14,35 +14,11 @@ export default class Question extends Component {
     answers: this.props.content.answers
   }
 
-  formatBoldText(text) {
-    const splittedString = text.split("");
+  markdownToHTML(text) {
 
-    const history = {
-      firstFind: false,
-      positionOfFirst: 0,
-      spanPlaced: false
-    }
-
-    for (var i = 0; i < splittedString.length; i++) {
-      if (splittedString[i] === "_" && !history.firstFind) {
-
-        history.firstFind = true;
-        history.positionOfFirst = i;
-      } else if (splittedString[i] === "_" && history.firstFind) {
-
-        delete splittedString[history.positionOfFirst];
-        if (history.spanPlaced) {
-          splittedString[i] = "</span>";
-          history.spanPlaced = false;
-        } else {
-          splittedString[i] = "<span>";
-          history.spanPlaced = true;
-        }
-        history.firstFind = false;
-      }
-    }
-
-    return splittedString.join("");
+    var md = require('markdown-it')();
+    var result = md.render(text);
+    return result;
 
   }
 
@@ -75,8 +51,8 @@ export default class Question extends Component {
         <div className="question__content" ref={div => this.contentRef = div}>
           {
             this.state.doLoadQuestion ?
-              <p dangerouslySetInnerHTML={{ __html: this.formatBoldText(this.state.questionContent) }}></p> :
-              <p dangerouslySetInnerHTML={{ __html: this.formatBoldText(this.state.fact) }}></p>
+              <p dangerouslySetInnerHTML={{ __html: this.markdownToHTML(this.state.questionContent) }}></p> :
+              <p dangerouslySetInnerHTML={{ __html: this.markdownToHTML(this.state.fact) }}></p>
           }
         </div>
         <div className="question__answers">
