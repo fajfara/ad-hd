@@ -15,10 +15,34 @@ export default class Question extends Component {
   }
 
   formatBoldText(text) {
-    console.log(text);
-    text = text.replace(/(__[a-zA-Z0-9\/-_]+__)/g, "<span>$1</span>").replace(/__/g, "")
-    console.log(text);
-    return text;
+    const splittedString = text.split("");
+
+    const history = {
+      firstFind: false,
+      positionOfFirst: 0,
+      spanPlaced: false
+    }
+
+    for (var i = 0; i < splittedString.length; i++) {
+      if (splittedString[i] === "_" && !history.firstFind) {
+
+        history.firstFind = true;
+        history.positionOfFirst = i;
+      } else if (splittedString[i] === "_" && history.firstFind) {
+
+        delete splittedString[history.positionOfFirst];
+        if (history.spanPlaced) {
+          splittedString[i] = "</span>";
+          history.spanPlaced = false;
+        } else {
+          splittedString[i] = "<span>";
+          history.spanPlaced = true;
+        }
+        history.firstFind = false;
+      }
+    }
+
+    return splittedString.join("");
 
   }
 
@@ -30,7 +54,7 @@ export default class Question extends Component {
 
   checkAnswer = (event) => {
     const clickedAnswer = event.target.getAttribute("data-answer");
-    if(this.state.correctAnswer === clickedAnswer) {
+    if (this.state.correctAnswer === clickedAnswer) {
       console.log("Yay you win!");
       this.setState({
         doLoadQuestion: false
@@ -39,12 +63,12 @@ export default class Question extends Component {
     }
   }
 
-  
+
 
 
   render() {
 
-    
+
 
     return (
       <div className="question">
@@ -61,20 +85,20 @@ export default class Question extends Component {
 
               <div className="question__answers__content">
                 <label className="question__answers__content__answer" data-answer="a" onClick={e => this.checkAnswer(e)}>
-                  { this.state.answers.a }
-                  <input type="radio" name="answer" id="answerA"/>
+                  {this.state.answers.a}
+                  <input type="radio" name="answer" id="answerA" />
                 </label>
 
                 <label className="question__answers__content__answer" data-answer="b" onClick={e => this.checkAnswer(e)}>
-                  { this.state.answers.b }
-                  <input type="radio" name="answer" id="answerB"/>
+                  {this.state.answers.b}
+                  <input type="radio" name="answer" id="answerB" />
                 </label>
 
                 <label className="question__answers__content__answer" data-answer="c" onClick={e => this.checkAnswer(e)}>
-                  { this.state.answers.c }
-                  <input type="radio" name="answer" id="answerC"/>
+                  {this.state.answers.c}
+                  <input type="radio" name="answer" id="answerC" />
                 </label>
-                
+
               </div>
 
               :
