@@ -6,40 +6,100 @@ import Monkey from "../img/monkey.png";
 
 import { Link } from 'react-router-dom';
 
+import { TimelineMax } from 'gsap/all';
 
 export default class Home extends Component {
 
+  constructor(props){
+    super(props);
+
+    // Refs for animation
+    this.titleLeft = null;
+    this.titleRight = null;
+    this.titleCenter = null;
+    this.adhdSign = null;
+    this.underADHDSign = null;
+    this.monkey = null;
+    this.scrollDown = null;
+
+    // Options for this component
+    this.options = {
+      animationDuration: 0.8
+    }
+
+    this.options.animationDelay = "-=" + this.options.animationDuration;
+
+    // Timelines for animation
+    this.initalLoadTween = null;
+  }
+
+  componentDidMount() {
+    this.initLandingTimeline();
+
+    this.initalLoadTween.play();
+  }
+
+
+
+  initLandingTimeline() {
+    this.initalLoadTween = new TimelineMax()
+      .from(this.titleLeft, this.options.animationDuration, {
+        opacity: 0,
+        left: "-30rem"
+      })
+      .from(this.titleCenter, this.options.animationDuration, {
+        opacity: 0,
+        bottom: "-30rem"
+      }, this.options.animationDelay)
+      .from(this.titleRight, this.options.animationDuration, {
+        opacity: 0,
+        left: "30rem"
+      }, this.options.animationDelay)
+      .from(this.adhdSign, this.options.animationDuration, {
+        opacity: 0,
+        top: "-30rem"
+      })
+      .from(this.underADHDSign, this.options.animationDuration, {
+        opacity: 0,
+        bottom: "-30rem"
+      }, this.options.animationDelay)
+      .from(this.monkey, this.options.animationDuration, {
+        opacity: 0,
+        left: "80%"
+      }, "+=0.5")
+      .from(this.scrollDown, this.options.animationDuration, {
+        opacity: 0,
+        bottom: "10rem"
+      })
+  }
+
   render() {
-
-    window.addEventListener("scroll", () => {
-
-    })
 
     return (
       <>
         <section className="main">
           <div className="main-title">
-            <img src={Ribbon} alt="Ribbon" className="main-title__ribbon" />
-            <img src={Monkey} alt="Monkey" className="main-title__monkey" />
+            <img src={Ribbon} alt="Ribbon" className="main-title__ribbon" ref={div => this.adhdSign = div}/>
+            <img src={Monkey} alt="Monkey" className="main-title__monkey" ref={div => this.monkey = div}/>
             <div className="main-title__top">
-              <div className="main-title__left">
+              <div className="main-title__left" ref={div => this.titleLeft = div}>
                 <h2>AD</h2>
               </div>
-              <div className="main-title__center">
+              <div className="main-title__center" ref={div => this.titleCenter = div}>
                 <i className="fas fa-bolt"></i>
               </div>
-              <div className="main-title__right">
+              <div className="main-title__right" ref={div => this.titleRight = div}>
                 <h2>HD</h2>
               </div>
             </div>
-            <div className="main-title__bottom_text">
+            <div className="main-title__bottom_text" ref={div => this.underADHDSign = div}>
               <p>
                 For those about <span>oh look a monkey</span>
               </p>
             </div>
           </div>
 
-          <div className="main-scroll-down">
+          <div className="main-scroll-down" ref={div => this.scrollDown = div }>
               <div className="chevron"></div>
               <div className="chevron"></div>
               <div className="chevron"></div>
