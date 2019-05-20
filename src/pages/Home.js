@@ -71,6 +71,8 @@ export default class Home extends Component {
         opacity: 0,
         bottom: "10rem"
       })
+
+      // Restart
   }
 
   render() {
