@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 
 // Image import
 import arrowIcon from '../img/right-arrow.svg';
@@ -26,6 +25,15 @@ export default class Question extends Component {
     this.setState({
       doLoadQuestion: true
     });
+  }
+
+  callPrev = () => {
+    if(this.props.index === 0){
+      window.location = "/";
+    } else {
+      this.props.goBack();
+    }
+    
   }
 
   checkAnswer = (event) => {
@@ -83,10 +91,8 @@ export default class Question extends Component {
           }
         </div>
 
-        <div className="question__content__backBtn">
-          <Link to="/">
+        <div className="question__content__backBtn" onClick={this.callPrev}>
             <img src={arrowIcon} alt="Go back" />
-          </Link>
         </div>
         <div className="question__content__nextBtn" onClick={this.callNext} >
           <img src={arrowIcon} alt="Go forward" />

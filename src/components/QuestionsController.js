@@ -65,12 +65,23 @@ export default class Questions extends Component {
             this.setState({
                 questionFull: this.state.questions[this.state.index],
                 loadQuestion: true
-            }, () => {
-                console.log(this.state.questionFull)
             })
             
         });
 
+    }
+
+    indexDown = () => {
+        this.setState({
+            index: this.state.index - 1,
+            loadQuestion: false
+        }, () => {
+            this.setState({
+                questionFull: this.state.questions[this.state.index],
+                loadQuestion: true
+            })
+            
+        });
     }
 
 
@@ -78,7 +89,7 @@ export default class Questions extends Component {
         return (
             <div className="questions">
                 {
-                    this.state.loadQuestion ? <Question content={this.state.questionFull} updateIndex={this.updateIndex}/> : <p>Loading...</p>
+                    this.state.loadQuestion ? <Question content={this.state.questionFull} updateIndex={this.updateIndex} goBack={this.indexDown} index={this.state.index}/> : <p>Loading...</p>
                 }
             </div>
         )
