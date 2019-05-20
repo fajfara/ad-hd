@@ -6,7 +6,7 @@ import Monkey from "../img/monkey.png";
 
 import { Link } from 'react-router-dom';
 
-import { TimelineMax } from 'gsap/all';
+import { TimelineMax } from 'gsap';
 
 export default class Home extends Component {
 
