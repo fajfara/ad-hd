@@ -4,9 +4,15 @@ import nextButton from '../img/right-arrow.svg';
 import Ribbon from "../img/ribbon.png";
 import Monkey from "../img/monkey.png";
 
+import layer_one from '../img/svg/layer_one.svg';
+import layer_two from '../img/svg/layer_two.svg';
+import layer_three from '../img/svg/layer_three.svg';
+
 import { Link } from 'react-router-dom';
 
 import { TimelineMax } from 'gsap';
+
+import Parallax from 'parallax-js';
 
 export default class Home extends Component {
 
@@ -37,6 +43,9 @@ export default class Home extends Component {
     this.initLandingTimeline();
 
     this.initalLoadTween.play();
+
+    const scene = document.getElementById('scene');
+    const parallaxInstance = new Parallax(scene);
   }
 
 
@@ -113,9 +122,9 @@ export default class Home extends Component {
         <section className="instructions">
           <div className="instructions__main">
             <div className="instructions__main__top-content">
+              <h3>Greetings inatentive/hyperactive people!</h3>
               <p>
-                Greetings inatentive/hyperactive people, welcome to the AD/HD exploring 
-                website where you will not only learn about AD/HD but will have fun doing so.
+                Welcome to the AD/HD exploring website where you will not only learn about AD/HD but will have fun doing so.
               </p>
             </div>
             <div className="instructions__main__buffer"></div>
@@ -138,6 +147,20 @@ export default class Home extends Component {
                 <Link to="/questions">
                   <img src={nextButton} alt="Next button"/>
                 </Link>
+              </div>
+            </div>
+
+            <div className="instructions__main__background" id="scene">
+              <div className="instructions__main__background__layer_one" data-depth="0.1">
+                <img src={ layer_one } alt="svg background"/>
+              </div>
+
+              <div className="instructions__main__background__layer_two" data-depth="0.2">
+                <img src={ layer_two } alt="svg background"/>
+              </div>
+
+              <div className="instructions__main__background__layer_three" data-depth="0.4">
+                <img src={ layer_three } alt="svg background"/>
               </div>
             </div>
           </div>
