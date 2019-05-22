@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Question from './Question';
 
+
+// Import layerjev za parallax
 import layer_one from '../img/svg/layer_one.svg';
 import layer_two from '../img/svg/layer_two.svg';
 import layer_three from '../img/svg/layer_three.svg';
@@ -29,6 +31,7 @@ export default class Questions extends Component {
         this.loadContentfulData();
 
         const scene = document.getElementById('scene2');
+        // eslint-disable-next-line
         const parallaxInstance = new Parallax(scene);
     }
 
@@ -53,6 +56,7 @@ export default class Questions extends Component {
 
     }
 
+    // Za premik po vprašanjih => povečevanje index-a
     updateIndex = () => {
         this.setState({
             index: this.state.index + 1,
@@ -66,6 +70,8 @@ export default class Questions extends Component {
         });
 
     }
+
+    // Basically za going back => zmanjšaj index
 
     indexDown = () => {
         this.setState({

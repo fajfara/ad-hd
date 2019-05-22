@@ -40,11 +40,14 @@ export default class Home extends Component {
   }
 
   componentDidMount() {
+    // Timeline za landing load
     this.initLandingTimeline();
 
+    // Zaženi timeline
     this.initalLoadTween.play();
 
     const scene = document.getElementById('scene');
+    // eslint-disable-next-line
     const parallaxInstance = new Parallax(scene);
   }
 
@@ -82,6 +85,14 @@ export default class Home extends Component {
       })
 
       // Restart
+  }
+
+  markdownToHTML(text) {
+
+    var md = require('markdown-it')();
+    var result = md.render(text);
+    return result;
+
   }
 
   render() {

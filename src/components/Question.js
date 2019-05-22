@@ -13,6 +13,7 @@ export default class Question extends Component {
     answers: this.props.content.answers
   }
 
+  // Formatiranje markdown-a ki se ga dobi iz contentfull cms-ja
   markdownToHTML(text) {
 
     var md = require('markdown-it')();
@@ -21,12 +22,14 @@ export default class Question extends Component {
 
   }
 
+  // Naloži naslednje vprašanje, v controllerju povečaj index
   callNext = () => {
     this.setState({
       doLoadQuestion: true
     });
   }
 
+  // Naloži prejšnje vprašanje, v controllerju pomanjšaj index
   callPrev = () => {
     if(this.props.index === 0){
       window.location = "/";
@@ -36,6 +39,7 @@ export default class Question extends Component {
     
   }
 
+
   checkAnswer = (event) => {
     const clickedAnswer = event.target.getAttribute("data-answer");
     if (this.state.correctAnswer === clickedAnswer) {
@@ -43,6 +47,7 @@ export default class Question extends Component {
       this.setState({
         doLoadQuestion: false
       })
+      // Če je pravilni odgovor naloži novo vprašanje
       this.props.updateIndex();
     }
   }
@@ -51,9 +56,7 @@ export default class Question extends Component {
 
 
   render() {
-
-
-
+    // Pod render je vse logika glede render vprašanj vezana na doLoadQuestion pod state on componente
     return (
       <div className="question">
         <div className="question__content" ref={div => this.contentRef = div}>
@@ -94,9 +97,16 @@ export default class Question extends Component {
         <div className="question__content__backBtn" onClick={this.callPrev}>
             <img src={arrowIcon} alt="Go back" />
         </div>
-        <div className="question__content__nextBtn" onClick={this.callNext} >
-          <img src={arrowIcon} alt="Go forward" />
-        </div>
+        {
+          this.state.doLoadQuestion 
+          ?
+          null
+          :
+          <div className="question__content__nextBtn" onClick={this.callNext} >
+            <img src={arrowIcon} alt="Go forward" />
+          </div> 
+
+        }
       </div>
     )
   }
