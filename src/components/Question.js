@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 // Image import
 import arrowIcon from '../img/right-arrow.svg';
 
+var md = require('markdown-it')();
+
 export default class Question extends Component {
 
   state = {
@@ -13,24 +15,25 @@ export default class Question extends Component {
     answers: this.props.content.answers
   }
 
-  // Formatiranje markdown-a ki se ga dobi iz contentfull cms-ja
+  
   markdownToHTML(text) {
-
-    var md = require('markdown-it')();
+    // Formatiranje markdown-a ki se ga dobi iz contentfull cms-ja
     var result = md.render(text);
     return result;
 
   }
 
-  // Naloži naslednje vprašanje, v controllerju povečaj index
+  
   callNext = () => {
+    // Naloži naslednje vprašanje, v controllerju povečaj index
     this.setState({
       doLoadQuestion: true
     });
   }
 
-  // Naloži prejšnje vprašanje, v controllerju pomanjšaj index
+  
   callPrev = () => {
+    // Naloži prejšnje vprašanje, v controllerju pomanjšaj index
     if(this.props.index === 0){
       window.location = "/";
     } else {
