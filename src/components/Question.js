@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
+import  { withRouter } from 'react-router-dom';
 
 // Image import
 import arrowIcon from '../img/right-arrow.svg';
 
 var md = require('markdown-it')();
 
-export default class Question extends Component {
+class Question extends Component {
 
   state = {
     questionContent: this.props.content.questionContent,
     correctAnswer: this.props.content.correctAnswer,
     fact: this.props.content.fact,
-    doLoadQuestion: false,
-    answers: this.props.content.answers
+    answers: this.props.content.answers,
+    doLoadQuestion: false
   }
 
   
@@ -33,10 +34,16 @@ export default class Question extends Component {
 
   
   callPrev = () => {
-    // Naloži prejšnje vprašanje, v controllerju pomanjšaj index
-    if(this.props.index === 0){
-      window.location = "/";
+    // glede na to kje smo, ustrezno manipuliraj state
+    if(this.props.index === 0 && !this.state.doLoadQuestion){
+      this.props.history.push('/');
     } else {
+      if(this.state.doLoadQuestion){
+        this.setState({
+          doLoadQuestion: false
+        });
+        return;
+      }
       this.props.goBack();
     }
     
@@ -46,13 +53,22 @@ export default class Question extends Component {
   checkAnswer = (event) => {
     const clickedAnswer = event.target.getAttribute("data-answer");
     if (this.state.correctAnswer === clickedAnswer) {
-      console.log("Yay you win!");
+      // Če je pravilni odgovor naloži novo vprašanje
       this.setState({
         doLoadQuestion: false
-      })
-      // Če je pravilni odgovor naloži novo vprašanje
+      });
       this.props.updateIndex();
+    } else {
+      // Če je napačen odgovor naloži fact
+      this.monkeySaysWrong();
     }
+  }
+
+  monkeySaysWrong() {
+    console.log("You are wrong!");
+    this.setState({
+      doLoadQuestion: false
+    });
   }
 
 
@@ -102,8 +118,11 @@ export default class Question extends Component {
         </div>
         {
           this.state.doLoadQuestion 
+
           ?
+
           null
+
           :
           <div className="question__content__nextBtn" onClick={this.callNext} >
             <img src={arrowIcon} alt="Go forward" />
@@ -114,3 +133,6 @@ export default class Question extends Component {
     )
   }
 }
+
+
+export default withRouter(Question);

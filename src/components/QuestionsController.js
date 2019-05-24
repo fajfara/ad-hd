@@ -56,8 +56,9 @@ export default class Questions extends Component {
 
     }
 
-    // Za premik po vprašanjih => povečevanje index-a
+    
     updateIndex = () => {
+    // Za premik po vprašanjih => povečevanje index-a
         this.setState({
             index: this.state.index + 1,
             loadQuestion: false
@@ -71,9 +72,10 @@ export default class Questions extends Component {
 
     }
 
-    // Basically za going back => zmanjšaj index
-
+    
     indexDown = () => {
+    // Basically za going back => zmanjšaj index
+    // TODO ko klikneš nazaj na fact gre nazaj na prejšnji question oz. če si na question gre nazaj na fact
         this.setState({
             index: this.state.index - 1,
             loadQuestion: false
