@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import nextButton from '../img/right-arrow.svg';
 import Ribbon from "../img/ribbon.png";
 import Monkey from "../img/monkey.png";
+import Cloud from "../img/svg/cloud.svg";
 
 import layer_one from '../img/svg/layer_one.svg';
 import layer_two from '../img/svg/layer_two.svg';
@@ -14,9 +15,11 @@ import { TimelineMax } from 'gsap';
 
 import Parallax from 'parallax-js';
 
+
+
 export default class Home extends Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
 
     // Refs for animation
@@ -42,7 +45,6 @@ export default class Home extends Component {
   componentDidMount() {
     // Timeline za landing load
     this.initLandingTimeline();
-
     // Zaženi timeline
     this.initalLoadTween.play();
 
@@ -84,7 +86,7 @@ export default class Home extends Component {
         bottom: "10rem"
       })
 
-      // Restart
+    // Restart
   }
 
   markdownToHTML(text) {
@@ -99,10 +101,19 @@ export default class Home extends Component {
 
     return (
       <>
+        <div id="clouds">
+          <div class="cloud x1"><img src={Cloud} alt="Cloud moving across screen" /></div>
+
+          <div class="cloud x2"><img src={Cloud} alt="Cloud moving across screen" /></div>
+
+          <div class="cloud x3"><img src={Cloud} alt="Cloud moving across screen" /></div>
+
+          <div class="cloud x4"><img src={Cloud} alt="Cloud moving across screen" /></div>
+        </div>
         <section className="main">
           <div className="main-title">
-            <img src={Ribbon} alt="Ribbon" className="main-title__ribbon" ref={div => this.adhdSign = div}/>
-            <img src={Monkey} alt="Monkey" className="main-title__monkey" ref={div => this.monkey = div}/>
+            <img src={Ribbon} alt="Ribbon" className="main-title__ribbon" ref={div => this.adhdSign = div} />
+            <img src={Monkey} alt="Monkey" className="main-title__monkey" ref={div => this.monkey = div} />
             <div className="main-title__top">
               <div className="main-title__left" ref={div => this.titleLeft = div}>
                 <h2>AD</h2>
@@ -121,15 +132,15 @@ export default class Home extends Component {
             </div>
           </div>
 
-          <div className="main-scroll-down" ref={div => this.scrollDown = div }>
-              <div className="chevron"></div>
-              <div className="chevron"></div>
-              <div className="chevron"></div>
-              <span className="text">Scroll down</span>
-            </div>
+          <div className="main-scroll-down" ref={div => this.scrollDown = div}>
+            <div className="chevron"></div>
+            <div className="chevron"></div>
+            <div className="chevron"></div>
+            <span className="text">Scroll down</span>
+          </div>
         </section>
 
-        
+
         <section className="instructions">
           <div className="instructions__main">
             <div className="instructions__main__top-content">
@@ -146,32 +157,32 @@ export default class Home extends Component {
               <div className="instructions__main__bottom-content__right">
                 <h3>Instructions:</h3>
                 <p>
-                  Follow the monkey through the text, but in the end, the monkey will not be able 
-                  to go through if you do not answer the question correctly, this is the fun part! 
+                  Follow the monkey through the text, but in the end, the monkey will not be able
+                  to go through if you do not answer the question correctly, this is the fun part!
                 </p>
               </div>
-              
+
             </div>
 
             <div className="instructions__main__next-button">
               <div className="instructions__main__next-button__icon">
                 <Link to="/questions">
-                  <img src={nextButton} alt="Next button"/>
+                  <img src={nextButton} alt="Next button" />
                 </Link>
               </div>
             </div>
 
             <div className="instructions__main__background" id="scene">
               <div className="instructions__main__background__layer_one" data-depth="0.1">
-                <img src={ layer_one } alt="svg background"/>
+                <img src={layer_one} alt="svg background" />
               </div>
 
               <div className="instructions__main__background__layer_two" data-depth="0.2">
-                <img src={ layer_two } alt="svg background"/>
+                <img src={layer_two} alt="svg background" />
               </div>
 
               <div className="instructions__main__background__layer_three" data-depth="0.4">
-                <img src={ layer_three } alt="svg background"/>
+                <img src={layer_three} alt="svg background" />
               </div>
             </div>
           </div>
@@ -180,3 +191,6 @@ export default class Home extends Component {
     )
   }
 }
+
+
+

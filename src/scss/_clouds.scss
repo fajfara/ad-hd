@@ -1,0 +1,64 @@
+/* Header background */
+#clouds{
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	position:absolute;
+	top: 0;
+	left: 0;
+	
+}
+
+.cloud {
+	position: absolute;
+	left: 1px;
+    top: 1px;
+}
+
+.x1 {
+    top: 5%;
+    width: 2rem;
+    height: 2rem;
+	animation: moveclouds1 20s linear infinite;
+}
+
+.x2 {
+
+    width: 5rem;
+    height: 5rem;
+	left: 450px;
+	top: 15%;
+	animation: moveclouds2 40s linear infinite;
+}
+
+.x3 {
+    width: 10rem;
+    height: 10rem;
+	left: 450px;
+	top: 30%;
+	animation: moveclouds2 10s linear infinite;
+}
+
+.x4 {
+    top: 60%;
+    width: 2rem;
+    height: 2rem;
+	animation: moveclouds1 50s linear infinite;
+}
+
+
+@keyframes moveclouds1{
+	0% {left: 0%; opacity: 0.0;}
+	10% {left: 10%; opacity: 1.0;}
+	70% {left: 70%; opacity: 1;}
+	80% { left: 80%; opacity: 0.0;}
+	100% {left: 100%; opacity: 0.0;}
+}
+
+@keyframes moveclouds2{
+	0% {left: 0%; opacity: 0.0;}
+	10% {left: 10%; opacity: 1.0;}
+	70% {left: 70%; opacity: 1;}
+	80% { left: 80%; opacity: 0.0;}
+	100% {left: 100%; opacity: 0.0;}
+}
