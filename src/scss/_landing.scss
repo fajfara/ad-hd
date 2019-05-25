@@ -261,7 +261,7 @@
           position: absolute;
           top: 0;
           left: 0;
-          z-index: 10;
+          z-index: 20;
 
           img {
             width: 110%;
@@ -277,7 +277,7 @@
           position: absolute;
           top: 0;
           left: 0;
-          z-index: 8;
+          z-index: 16;
 
           img {
             width: 110%;
@@ -293,12 +293,62 @@
           position: absolute;
           top: 0;
           left: 0;
-          z-index: 6;
+          z-index: 13;
+          
 
           img {
             width: 110%;
             position: absolute;
             bottom: -8rem;
+            left: -3rem;
+          }
+        }
+
+        &_four {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 10;
+
+          img {
+            width: 110%;
+            position: absolute;
+            bottom: -8rem;
+            left: -3rem;
+          }
+        }
+
+        &_five {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 7;
+
+          img {
+            width: 110%;
+            position: absolute;
+            bottom: -8rem;
+            left: -3rem;
+          }
+        }
+
+        &_six {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 3;
+
+          img {
+            width: 110%;
+            position: absolute;
+            bottom: -8rem;
+            left: -3rem;
           }
         }
       }

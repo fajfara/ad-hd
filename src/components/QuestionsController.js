@@ -3,9 +3,17 @@ import Question from './Question';
 
 
 // Import layerjev za parallax
-import layer_one from '../img/svg/layer_one.svg';
+/* import layer_one from '../img/svg/layer_one.svg';
 import layer_two from '../img/svg/layer_two.svg';
-import layer_three from '../img/svg/layer_three.svg';
+import layer_three from '../img/svg/layer_three.svg'; */
+
+import layer_one from '../img/svg/background/layer_one.svg';
+import layer_two from '../img/svg/background/layer_two.svg';
+import layer_three from '../img/svg/background/layer_three.svg';
+import layer_four from '../img/svg/background/layer_four.svg';
+import layer_five from '../img/svg/background/layer_five.svg';
+
+
 
 import Parallax from 'parallax-js';
 
@@ -56,9 +64,9 @@ export default class Questions extends Component {
 
     }
 
-    
+
     updateIndex = () => {
-    // Za premik po vprašanjih => povečevanje index-a
+        // Za premik po vprašanjih => povečevanje index-a
         this.setState({
             index: this.state.index + 1,
             loadQuestion: false
@@ -72,10 +80,10 @@ export default class Questions extends Component {
 
     }
 
-    
+
     indexDown = () => {
-    // Basically za going back => zmanjšaj index
-    // TODO ko klikneš nazaj na fact gre nazaj na prejšnji question oz. če si na question gre nazaj na fact
+        // Basically za going back => zmanjšaj index
+        // TODO ko klikneš nazaj na fact gre nazaj na prejšnji question oz. če si na question gre nazaj na fact
         this.setState({
             index: this.state.index - 1,
             loadQuestion: false
@@ -97,20 +105,28 @@ export default class Questions extends Component {
                 }
 
                 <div className="questions__background" id="scene2">
-                    <div className="instructions__main__background__layer_one" data-depth="0.1">
+                    <div className="instructions__main__background__layer_one" data-depth="0.2">
                         <img src={layer_one} alt="svg background" />
                     </div>
 
-                    <div className="instructions__main__background__layer_two" data-depth="0.2">
+                    <div className="instructions__main__background__layer_two" data-depth="0.1">
                         <img src={layer_two} alt="svg background" />
                     </div>
 
-                    <div className="instructions__main__background__layer_three" data-depth="0.4">
+                    <div className="instructions__main__background__layer_three" data-depth="0.05">
                         <img src={layer_three} alt="svg background" />
                     </div>
-                </div>
 
+                    <div className="instructions__main__background__layer_four" data-depth="0.02">
+                        <img src={layer_four} alt="svg background" />
+                    </div>
+
+                    <div className="instructions__main__background__layer_five" data-depth="0">
+                        <img src={layer_five} alt="svg background" />
+                    </div>
+                </div>
             </div>
+
         )
     }
 }

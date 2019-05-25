@@ -1,0 +1,16 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <style>
+      .cls-1 {
+        opacity: 0.48;
+        fill: url(#linear-gradient);
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="960" x2="960" y2="1080" gradientUnits="userSpaceOnUse">
+      <stop offset="0.16735" stop-color="#87ceeb"/>
+      <stop offset="0.94599" stop-color="#c69c6d"/>
+    </linearGradient>
+  </defs>
+  <title>spredaj</title>
+  <rect id="spredaj" class="cls-1" width="1920" height="1080"/>
+</svg>

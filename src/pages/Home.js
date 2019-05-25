@@ -5,9 +5,20 @@ import Ribbon from "../img/ribbon.png";
 import Monkey from "../img/monkey.png";
 import Cloud from "../img/svg/cloud.svg";
 
+/* 
 import layer_one from '../img/svg/layer_one.svg';
 import layer_two from '../img/svg/layer_two.svg';
-import layer_three from '../img/svg/layer_three.svg';
+import layer_three from '../img/svg/layer_three.svg'; 
+
+*/
+
+import layer_one from '../img/svg/background/layer_one.svg';
+import layer_two from '../img/svg/background/layer_two.svg';
+import layer_three from '../img/svg/background/layer_three.svg';
+import layer_four from '../img/svg/background/layer_four.svg';
+import layer_five from '../img/svg/background/layer_five.svg';
+
+
 
 import { Link } from 'react-router-dom';
 
@@ -102,13 +113,13 @@ export default class Home extends Component {
     return (
       <>
         <div id="clouds">
-          <div class="cloud x1"><img src={Cloud} alt="Cloud moving across screen" /></div>
+          <div className="cloud x1"><img src={Cloud} alt="Cloud moving across screen" /></div>
 
-          <div class="cloud x2"><img src={Cloud} alt="Cloud moving across screen" /></div>
+          <div className="cloud x2"><img src={Cloud} alt="Cloud moving across screen" /></div>
 
-          <div class="cloud x3"><img src={Cloud} alt="Cloud moving across screen" /></div>
+          <div className="cloud x3"><img src={Cloud} alt="Cloud moving across screen" /></div>
 
-          <div class="cloud x4"><img src={Cloud} alt="Cloud moving across screen" /></div>
+          <div className="cloud x4"><img src={Cloud} alt="Cloud moving across screen" /></div>
         </div>
         <section className="main">
           <div className="main-title">
@@ -173,16 +184,24 @@ export default class Home extends Component {
             </div>
 
             <div className="instructions__main__background" id="scene">
-              <div className="instructions__main__background__layer_one" data-depth="0.1">
+              <div className="instructions__main__background__layer_one" data-depth="0.2">
                 <img src={layer_one} alt="svg background" />
               </div>
 
-              <div className="instructions__main__background__layer_two" data-depth="0.2">
+              <div className="instructions__main__background__layer_two" data-depth="0.1">
                 <img src={layer_two} alt="svg background" />
               </div>
 
-              <div className="instructions__main__background__layer_three" data-depth="0.4">
+              <div className="instructions__main__background__layer_three" data-depth="0.05">
                 <img src={layer_three} alt="svg background" />
+              </div>
+
+              <div className="instructions__main__background__layer_four" data-depth="0.02">
+                <img src={layer_four} alt="svg background" />
+              </div>
+
+              <div className="instructions__main__background__layer_five" data-depth="0">
+                <img src={layer_five} alt="svg background" />
               </div>
             </div>
           </div>
